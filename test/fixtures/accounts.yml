@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  primeiroNome: MyString
+  ultimoNome: MyString
+  isPessoaFisica: false
+  dataNascimento: 2022-09-12
+  documento: MyString
+
+two:
+  primeiroNome: MyString
+  ultimoNome: MyString
+  isPessoaFisica: false
+  dataNascimento: 2022-09-12
+  documento: MyString
