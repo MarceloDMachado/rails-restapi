@@ -1,0 +1,246 @@
+  [1m[35m (97.2ms)[0m  [1m[35mCREATE DATABASE "rails_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (37.0ms)[0m  [1m[35mCREATE DATABASE "rails_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "rails_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "rails_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4598764919443922325)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAccounts (20220912144726)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "primeiroNome" character varying, "ultimoNome" character varying, "isPessoaFisica" boolean, "dataNascimento" date, "documento" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220912144726"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 16:32:35.984856"], ["updated_at", "2022-09-12 16:32:35.984856"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4598764919443922325)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-09-12 13:38:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/marcelodmachado/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/marcelodmachado/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | Allocations: 658)
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 4969)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2022-09-12 13:39:01 -0300
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (3.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 3.0ms | Allocations: 2004)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-09-12 13:39:01 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/accounts" for 127.0.0.1 at 2022-09-12 15:28:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#index as */*
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.8ms | Allocations: 4025)
+
+
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:30:25 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "dataNascimento"=>"13-01-1997", "documento"=>"44862720803"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 264)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts?primeiroNome=Marcelo&ultimoNome=Machado" for 127.0.0.1 at 2022-09-12 15:31:19 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 135)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts?primeiroNome=Marcelo&ultimoNome=Machado" for 127.0.0.1 at 2022-09-12 15:32:04 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 135)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:32:22 -0300
+Processing by AccountsController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 127)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:33:04 -0300
+Processing by AccountsController#create as */*
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 127)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:33:12 -0300
+Processing by AccountsController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 127)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:33:16 -0300
+Processing by AccountsController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 129)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:33:34 -0300
+Processing by AccountsController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 127)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:34:15 -0300
+Processing by AccountsController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 127)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:34:44 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"account_params"=>{"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado"}, "account"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 14.3ms | Allocations: 181)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:36:31 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"account_params"=>{"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "documento"=>"44862720803"}, "account"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 163)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:37:20 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"account_params"=>{"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "documento"=>"44862720803"}, "account"=>{}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 163)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:37:45 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"param"=>{"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "documento"=>"44862720803"}, "account"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts?primeiroNome=Marcelo&ultimoNome=Machado" for 127.0.0.1 at 2022-09-12 15:38:24 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "account"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 144)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:38:57 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"account"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 138)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:39:03 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"param"=>{"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "documento"=>"44862720803"}, "account"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:40:31 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "dataNascimento"=>"13-01-1997", "documento"=>"44862720803"}
+Completed 400 Bad Request in 1ms (Allocations: 141)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: account):
+  
+app/controllers/accounts_controller.rb:49:in `account_params'
+app/controllers/accounts_controller.rb:18:in `create'
+Started POST "/accounts" for 127.0.0.1 at 2022-09-12 15:41:11 -0300
+Processing by AccountsController#create as */*
+  Parameters: {"account"=>{"primeiroNome"=>"Marcelo", "ultimoNome"=>"Machado", "isPessoaFisica"=>"true", "documento"=>"44862720803"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:20:in `create'
+  [1m[36mAccount Create (1.5ms)[0m  [1m[32mINSERT INTO "accounts" ("primeiroNome", "ultimoNome", "isPessoaFisica", "dataNascimento", "documento", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["primeiroNome", "Marcelo"], ["ultimoNome", "Machado"], ["isPessoaFisica", true], ["dataNascimento", nil], ["documento", "44862720803"], ["created_at", "2022-09-12 18:41:11.561486"], ["updated_at", "2022-09-12 18:41:11.561486"]]
+  ↳ app/controllers/accounts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:20:in `create'
+Completed 201 Created in 35ms (Views: 0.3ms | ActiveRecord: 14.5ms | Allocations: 11147)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2022-09-12 15:41:18 -0300
+Processing by AccountsController#index as */*
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/accounts_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.5ms | Allocations: 1025)
+
+
